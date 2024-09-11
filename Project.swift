@@ -2,12 +2,27 @@ import ProjectDescription
 
 let project = Project(
     name: "GitHubObserver",
+    packages: [
+        .remote(
+            url: "https://github.com/pointfreeco/swift-composable-architecture",
+            requirement: .upToNextMajor(from: "0.8.0")
+        )
+    ],
+    settings: .settings(
+        base: ["DEVELOPMENT_TEAM": "승욱 신 (Personal Team)"],
+        configurations: [
+            .debug(name: .debug),
+            .debug(name: "QA"),
+            .release(name: .release)
+        ],
+        defaultSettings: .recommended
+    ),
     targets: [
         .target(
             name: "GitHubObserver",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.GitHubObserver",
+            bundleId: "com.ukseung.GitHubObserver",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -18,13 +33,15 @@ let project = Project(
             ),
             sources: ["GitHubObserver/Sources/**"],
             resources: ["GitHubObserver/Resources/**"],
-            dependencies: []
+            dependencies: [
+                .package(product: "ComposableArchitecture")
+            ]
         ),
         .target(
             name: "GitHubObserverTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.GitHubObserverTests",
+            bundleId: "com.ukseung.GitHubObserverTests",
             infoPlist: .default,
             sources: ["GitHubObserver/Tests/**"],
             resources: [],
