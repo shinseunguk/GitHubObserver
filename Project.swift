@@ -2,6 +2,10 @@ import ProjectDescription
 
 let project = Project(
     name: "GitHubObserver",
+    options: .options(
+        defaultKnownRegions: ["en", "ko"],
+        developmentRegion: "ko"
+    ),
     packages: [
         .remote(
             url: "https://github.com/pointfreeco/swift-composable-architecture",
