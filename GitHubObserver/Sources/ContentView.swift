@@ -4,8 +4,19 @@ public struct ContentView: View {
     public init() {}
 
     public var body: some View {
-        Text("Hello, World!")
-            .padding()
+        TabView {
+          RepositorySearchView()
+            .tabItem {
+              Image(systemName: "magnifyingglass")
+              Text("Repository Search")
+            }
+          ProfileView()
+            .tabItem {
+              Image(systemName: "person.crop.circle.fill")
+              Text("Profile")
+            }
+        }
+        .font(.headline)
     }
 }
 
