@@ -8,3 +8,10 @@
 
 "Repository Search" = "Repository Search";
 "Profile" = "Profile";
+"Search" = "Search";
+"Please enter repository" = "Please enter repository";
+
+"Network connection failed." = "Network connection failed.";
+"Failed to parse response data." = "Failed to parse response data.";
+"Invalid response from server." = "Invalid response from server.";
+"An unknown error occurred." = "An unknown error occurred.";

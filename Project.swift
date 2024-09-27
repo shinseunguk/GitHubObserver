@@ -10,6 +10,18 @@ let project = Project(
         .remote(
             url: "https://github.com/pointfreeco/swift-composable-architecture",
             requirement: .upToNextMajor(from: "0.8.0")
+        ),
+        .remote(
+            url: "https://github.com/Moya/Moya.git",
+            requirement: .branch("master")
+        ),
+        .remote(
+            url: "https://github.com/realm/realm-swift",
+            requirement: .branch("master")
+        ),
+        .remote(
+            url: "https://github.com/onevcat/Kingfisher",
+            requirement: .branch("master")
         )
     ],
     settings: .settings(
@@ -38,7 +50,10 @@ let project = Project(
             sources: ["GitHubObserver/Sources/**"],
             resources: ["GitHubObserver/Resources/**"],
             dependencies: [
-                .package(product: "ComposableArchitecture")
+                .package(product: "ComposableArchitecture"),
+                .package(product: "Moya"),
+                .package(product: "Realm"),
+                .package(product: "Kingfisher")
             ]
         ),
         .target(
