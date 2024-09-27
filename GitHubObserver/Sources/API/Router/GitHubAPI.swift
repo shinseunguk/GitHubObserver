@@ -45,7 +45,7 @@ extension GitHubAPI: TargetType {
     var headers: [String : String]? {
         return [
             "Content-type": "application/json",
-            "Authorization": getAuthorization()
+            "Authorization": Bundle.main.GITHUB_API_KEY
         ]
     }
 }
