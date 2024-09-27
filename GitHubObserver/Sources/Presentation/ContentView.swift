@@ -1,9 +1,9 @@
 import SwiftUI
 import Foundation
+import ComposableArchitecture
 
 enum ContentViewConstants {
     static let RepositorySearch = "Repository Search".localized()
-    
     static let Profile = "Profile".localized()
 }
 
@@ -15,7 +15,7 @@ public struct ContentView: View {
 
     public var body: some View {
         TabView {
-          RepositorySearchView()
+            RepositorySearchView(store: Store(initialState: RepositorySearchFeature.State(), reducer: RepositorySearchFeature() ))
             .tabItem {
               Image(systemName: "magnifyingglass")
               Text(constants.RepositorySearch)
