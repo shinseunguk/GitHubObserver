@@ -50,7 +50,7 @@ struct RepositorySearchFeature: Reducer {
         case .searchButtonTapped:
             state.isLoading = true
             state.items = nil
-            state.page = 0
+            state.page = 1
             return githubService.searchRepositories(query: state.text, page: state.page)
                 .debounce(
                     id: ID.debounce,

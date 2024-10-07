@@ -41,62 +41,36 @@ public struct RepositorySearchView: View {
                 
                 if let items = viewStore.items {
                     ZStack(alignment: .center) {
-                        if viewStore.isLoading {
-                            List(Array(items.enumerated()), id: \.element.id) { index, repository in
-                                LazyVStack(alignment: .leading) {
-                                    RepositoryListView(
-                                        avatarURL: repository.owner.avatarURL ?? "",
-                                        repositoryName: repository.name ?? "",
-                                        repostioryDescription: repository.description ?? "",
-                                        language: repository.language ?? "",
-                                        stargazersCount: repository.stargazersCount ?? 0
-                                    )
-                                    .onTapGesture {
-                                        // 아이템 클릭 이벤트 발생
-                                        viewStore.send(.itemTapped(item: repository))
-                                    }
+                        List {
+                            ForEach(Array(items.enumerated()), id: \.element.id) { listIndex, repository in
+                                RepositoryListView(
+                                    avatarURL: repository.owner.avatarURL ?? "",
+                                    repositoryName: repository.name ?? "",
+                                    repostioryDescription: repository.description ?? "",
+                                    language: repository.language ?? "",
+                                    stargazersCount: repository.stargazersCount ?? 0
+                                )
+                                .onTapGesture {
+                                    // 아이템 클릭 이벤트 발생
+                                    viewStore.send(.itemTapped(item: repository))
                                 }
                                 .buttonStyle(PlainButtonStyle()) // 버튼 스타일 설정
+                                
                                 .onAppear {
-                                    // 마지막 아이템이 나타났을 때 액션 실행
-                                    if index == items.count - 1 {
-                                        print("맨 밑 도달")
+                                    if listIndex == items.count - 1 {
                                         viewStore.send(.scrollToBottom)
                                     }
                                 }
                             }
-                            .listStyle(PlainListStyle())
-                            
+                        }
+                        .listStyle(PlainListStyle())
+                        
+                        if viewStore.isLoading {
                             Color.black.opacity(0.05) // 터치 차단용 투명한 오버레이
                                 .ignoresSafeArea()
                             
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .red))
-                        } else {
-                            List(Array(items.enumerated()), id: \.element.id) { index, repository in
-                                LazyVStack(alignment: .leading) {
-                                    RepositoryListView(
-                                        avatarURL: repository.owner.avatarURL ?? "",
-                                        repositoryName: repository.name ?? "",
-                                        repostioryDescription: repository.description ?? "",
-                                        language: repository.language ?? "",
-                                        stargazersCount: repository.stargazersCount ?? 0
-                                    )
-                                    .onTapGesture {
-                                        // 아이템 클릭 이벤트 발생
-                                        viewStore.send(.itemTapped(item: repository))
-                                    }
-                                }
-                                .buttonStyle(PlainButtonStyle()) // 버튼 스타일 설정
-                                .onAppear {
-                                    // 마지막 아이템이 나타났을 때 액션 실행
-                                    if index == items.count - 1 {
-                                        print("맨 밑 도달")
-                                        viewStore.send(.scrollToBottom)
-                                    }
-                                }
-                            }
-                            .listStyle(PlainListStyle())
                         }
                     }
                 } else {
