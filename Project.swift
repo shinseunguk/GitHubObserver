@@ -16,11 +16,11 @@ let project = Project(
             requirement: .branch("master")
         ),
         .remote(
-            url: "https://github.com/realm/realm-swift",
+            url: "https://github.com/onevcat/Kingfisher",
             requirement: .branch("master")
         ),
         .remote(
-            url: "https://github.com/onevcat/Kingfisher",
+            url: "https://github.com/evgenyneu/keychain-swift.git",
             requirement: .branch("master")
         )
     ],
@@ -39,6 +39,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "com.ukseung.GitHubObserver",
+            deploymentTargets: .iOS("16.0"),
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -52,8 +53,8 @@ let project = Project(
             dependencies: [
                 .package(product: "ComposableArchitecture"),
                 .package(product: "Moya"),
-                .package(product: "Realm"),
-                .package(product: "Kingfisher")
+                .package(product: "Kingfisher"),
+                .package(product: "KeychainSwift")
             ]
         ),
         .target(
