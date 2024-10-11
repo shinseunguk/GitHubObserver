@@ -19,6 +19,8 @@ public struct RepositorySearchView: View {
     public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
+                Spacer()
+                    .frame(height: 10)
                 HStack {
                     SearchBar(text: viewStore.binding(
                         get: \.text,
