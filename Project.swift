@@ -20,19 +20,10 @@ let project = Project(
             requirement: .branch("master")
         ),
         .remote(
-            url: "https://github.com/evgenyneu/keychain-swift.git",
-            requirement: .branch("master")
+            url: "https://github.com/no-comment/KeyboardToolbar.git",
+            requirement: .branch("main")
         )
     ],
-    settings: .settings(
-        base: ["DEVELOPMENT_TEAM": "승욱 신 (Personal Team)"],
-        configurations: [
-            .debug(name: .debug),
-            .debug(name: "QA"),
-            .release(name: .release)
-        ],
-        defaultSettings: .recommended
-    ),
     targets: [
         .target(
             name: "GitHubObserver",
@@ -40,22 +31,35 @@ let project = Project(
             product: .app,
             bundleId: "com.ukseung.GitHubObserver",
             deploymentTargets: .iOS("16.0"),
-            infoPlist: .extendingDefault(
-                with: [
-                    "UILaunchScreen": [
-                        "UIColorName": "",
-                        "UIImageName": "",
-                    ],
+            infoPlist: .extendingDefault(with: [
+                "UILaunchScreen": [
+                    "UIColorName": "",
+                    "UIImageName": "",
+                ],
+                "CFBundleURLTypes": [
+                    [
+                        "CFBundleURLName": "GitHubObserver",
+                        "CFBundleURLSchemes": ["GitHubObserver"]
+                    ]
                 ]
-            ),
+            ]),
             sources: ["GitHubObserver/Sources/**"],
             resources: ["GitHubObserver/Resources/**"],
             dependencies: [
                 .package(product: "ComposableArchitecture"),
                 .package(product: "Moya"),
                 .package(product: "Kingfisher"),
-                .package(product: "KeychainSwift")
-            ]
+                .package(product: "KeyboardToolbar")
+            ],
+            settings: .settings(
+                base: [:],
+                configurations: [
+                    .debug(name: .debug),
+                    .debug(name: "QA"),
+                    .release(name: .release)
+                ],
+                defaultSettings: .recommended
+            )
         ),
         .target(
             name: "GitHubObserverTests",

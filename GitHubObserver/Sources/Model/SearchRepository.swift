@@ -60,7 +60,7 @@ struct Item: Codable, Equatable {
     let visibility: Visibility?
     let forks, openIssues, watchers: Int?
     let defaultBranch: String?
-    let permissions: Permissions
+    let permissions: Permissions?
     let score: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -171,6 +171,19 @@ struct Owner: Codable, Equatable {
     let receivedEventsURL: String?
     let type: TypeEnum
     let siteAdmin: Bool?
+    let name: String?
+    let company: JSONNull?
+    let blog: String?
+    let location: String?
+    let email, hireable: JSONNull?
+    let bio: String?
+    let twitterUsername, notificationEmail: JSONNull?
+    let publicRepos, publicGists, followers, following: Int?
+    let createdAt, updatedAt: String?
+    let privateGists, totalPrivateRepos, ownedPrivateRepos, diskUsage: Int?
+    let collaborators: Int?
+    let twoFactorAuthentication: Bool?
+    let plan: Plan?
 
     enum CodingKeys: String, CodingKey {
         case login, id
@@ -190,6 +203,32 @@ struct Owner: Codable, Equatable {
         case receivedEventsURL = "received_events_url"
         case type
         case siteAdmin = "site_admin"
+        case name, company, blog, location, email, hireable, bio
+        case twitterUsername = "twitter_username"
+        case notificationEmail = "notification_email"
+        case publicRepos = "public_repos"
+        case publicGists = "public_gists"
+        case followers, following
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case privateGists = "private_gists"
+        case totalPrivateRepos = "total_private_repos"
+        case ownedPrivateRepos = "owned_private_repos"
+        case diskUsage = "disk_usage"
+        case collaborators
+        case twoFactorAuthentication = "two_factor_authentication"
+        case plan
+    }
+}
+
+// MARK: - Plan
+struct Plan: Codable, Equatable {
+    let name: String
+    let space, collaborators, privateRepos: Int
+
+    enum CodingKeys: String, CodingKey {
+        case name, space, collaborators
+        case privateRepos = "private_repos"
     }
 }
 
