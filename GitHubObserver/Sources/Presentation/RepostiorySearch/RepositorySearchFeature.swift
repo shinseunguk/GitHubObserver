@@ -58,7 +58,6 @@ struct RepositorySearchFeature: Reducer {
                     scheduler: DispatchQueue.main
                 )
                 .cancellable(id: ID.debounce) // 동일한 debounce ID를 사용하여 중복 요청 방지
-                .eraseToEffect() // Effect로 변환
         case .scrollToBottom:
             state.isLoading = true
             state.page += 1
@@ -69,7 +68,6 @@ struct RepositorySearchFeature: Reducer {
                     scheduler: DispatchQueue.main
                 )
                 .cancellable(id: ID.debounce) // 동일한 debounce ID를 사용하여 중복 요청 방지
-                .eraseToEffect() // Effect로 변환
         case .fetchRepositoriesResponse(let result):
             state.isLoading = false
             // 새로운 데이터를 기존 데이터에 추가

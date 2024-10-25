@@ -11,6 +11,7 @@
 "Profile" = "Profile";
 "Search" = "Search";
 "Please enter repository" = "Please enter repository";
+"Look up Repository" = "Look up Repository";
 
 // GitHubAPI Alert
 "Network connection failed." = "Network connection failed.";
@@ -19,7 +20,9 @@
 "An unknown error occurred." = "An unknown error occurred.";
 
 // ProfileView
-"Login is required." = "Login is required.";
+"Login is required" = "Login is required";
+"Do you want to logout?" = "Do you want to logout?";
 "Login" = "Login";
+"Logout" = "Logout";
 "Cancel" = "Cancel";
 

@@ -31,11 +31,12 @@ struct RepositoryListView: View {
                 .placeholder {
                     Image(systemName: "")
                 }.retry(maxCount: 3, interval: .seconds(5))
+                .cacheMemoryOnly()  // 메모리 캐시만 사용
                 .resizable()
                   .frame(width: 50, height: 50) //resize
                   .cornerRadius(20) //둥근 코너 설정
                   .shadow(radius: 5) // 그림자 설정
-                  .padding(.trailing, 20)
+                  .padding(.horizontal, 20)
             
             VStack(alignment: .leading, spacing: 5.0) {
                 Text(repositoryName)
@@ -48,7 +49,8 @@ struct RepositoryListView: View {
                     Circle()
                         .frame(width: 10, height: 10)
                         .foregroundColor(Color.init(hex: hexColor(for: language)))
-                    Text(language)
+                    Text(language != "" ? language : "Unknown")
+                        .foregroundColor(language != "" ? .black : .blue)
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .padding(.trailing, 20)
