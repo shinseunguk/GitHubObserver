@@ -206,12 +206,24 @@ ScrollView {
 
 1. **Login / Logout**
    - [로그인] 버튼을 누를 경우 Github가 제공하는 OAuth 페이지로 이동하고 홈페이지에서 로그인이 완료가 되면 앱에 code값을 callback하게 됨 그 이후에 해당 code값으로 Rest API 요청을 진행
+
+     <br>
+   <div align="center">
+      <img width="300" alt="image" src="https://github.com/user-attachments/assets/abb5e136-6a7a-47f1-9791-5547608f2bb3">
+   </div>
+
      
 2. **My Profile**
-   - 로그인이 완료될 경우 API Response에서 필요한 데이터를 parsing하여 View에 뿌려줌
+   - 로그인이 완료될 경우 API Response에서 필요한 데이터를 parsing하여 View에 Set
 
 3. **My Repository**
    - 로그인이 완료될 경우 My Profile의 reponse값을 My Repostiory request payload에 담아 서버 요청
+
+   <br>
+   <div align="center">
+      <img width="300" alt="image" src="https://github.com/user-attachments/assets/bbb84dd7-0f45-4809-80ec-a799b58b65cd">
+   </div>
+
 
 4. **Repository Search**
    - 로그인 유무와 관계 없이 Repository를 검색할 수 있음
